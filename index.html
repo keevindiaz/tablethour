@@ -20,21 +20,25 @@
       </div>
     </div>
 
-    <div class="main-column">
-      <div class="clock" id="clock">--:--</div>
-      <div class="weather-row">
-        <div class="weather-box">
-          <div class="label">Hoy</div>
-          <img id="iconToday" class="weather-icon" src="" alt="icono hoy" />
-          <div id="temp">--°C</div>
-        </div>
-        <div class="weather-box">
-          <div class="label">Mañana</div>
-          <img id="iconTomorrow" class="weather-icon" src="" alt="icono mañana" />
-          <div id="tempTomorrow">--°C</div>
-        </div>
-      </div>
-    </div>
+<div class="weather-block">
+  <img id="iconToday" class="weather-icon" src="" alt="icono hoy" />
+  <div class="weather-temp">
+    <span id="tempToday">Actual: --°C</span>
+    <span id="minToday">Mín: --°C</span>
+    <span id="maxToday">Máx: --°C</span>
+  </div>
+</div>
+
+<!-- Clima mañana -->
+<div class="weather-block">
+  <img id="iconTomorrow" class="weather-icon" src="" alt="icono mañana" />
+  <div class="weather-temp">
+    <span id="tempTomorrow">Prom: --°C</span>
+    <span id="minTomorrow">Mín: --°C</span>
+    <span id="maxTomorrow">Máx: --°C</span>
+  </div>
+</div>
+
 
     <div class="network-monitor" id="network">
       Velocidad: <span id="speed">-- Mbps</span>
@@ -44,4 +48,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
