@@ -22,16 +22,22 @@
 
     <div class="main-column">
       <div class="clock" id="clock">--:--</div>
-      <div class="weather">
-        <div>🌡️ <span id="temp">26°C</span></div>
-        <div>💧 <span id="humedad">60% Humedad</span></div>
+      <div class="weather-row">
+        <div class="weather-box">
+          <div class="label">Hoy</div>
+          <img id="iconToday" class="weather-icon" src="" alt="icono hoy" />
+          <div id="temp">--°C</div>
+        </div>
+        <div class="weather-box">
+          <div class="label">Mañana</div>
+          <img id="iconTomorrow" class="weather-icon" src="" alt="icono mañana" />
+          <div id="tempTomorrow">--°C</div>
+        </div>
       </div>
-      <div class="buttons">
-        <a href="https://youtube.com" target="_blank" class="btn">🎬 YouTube</a>
-        <a href="https://fast.com" target="_blank" class="btn">🌐 Red</a>
-        <a href="https://copilot.microsoft.com" target="_blank" class="btn">🧠 Copilot</a>
-        <a href="#" class="btn">⚙️ Config</a>
-      </div>
+    </div>
+
+    <div class="network-monitor" id="network">
+      Velocidad: <span id="speed">-- Mbps</span>
     </div>
   </div>
 
