@@ -1,44 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Tablet Hour</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="layout">
-    <!-- Columna izquierda: días -->
-    <div class="days">
-      <span>LUN</span>
-      <span>MAR</span>
-      <span>MIÉ</span>
-      <span>JUE</span>
-      <span>VIE</span>
-      <span>SÁB</span>
-      <span>DOM</span>
+    <div class="days" id="days">
+      <span>Lun</span>
+      <span>Mar</span>
+      <span>Mié</span>
+      <span>Jue</span>
+      <span>Vie</span>
+      <span>Sáb</span>
+      <span>Dom</span>
     </div>
-
-    <!-- Centro: hora y clima -->
     <div class="center-block">
-      <div id="clock" class="clock">--:--</div>
-
+      <div class="clock" id="clock">--:--</div>
       <div class="weather-block">
-        <img id="iconToday" class="weather-icon" src="" alt="icono hoy" />
-        <div class="weather-temp">
-          <span id="tempToday">--°C</span>
-          <span id="minToday">Mín: --°C</span>
-          <span id="maxToday">Máx: --°C</span>
+        <img src="weather-icon.png" alt="Icono clima" class="weather-icon" id="weather-icon">
+        <div class="weather-temp" id="weather-temp">
+          <span>--°C</span>
+          <span>--</span>
+          <span>Min: --° / Max: --°</span>
         </div>
       </div>
     </div>
-
-    <!-- Derecha: viento -->
-    <div class="wind-block">
-      <span id="windSpeed">Velocidad: -- Mbps</span>
+    <div class="wind-block" id="wind-block">
+      Velocidad: -- Mbps ↓ / -- Mbps ↑
     </div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
