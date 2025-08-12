@@ -19,6 +19,14 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
+function updateConnectionSpeed() {
+  const mbps = navigator.connection?.downlink || 0;
+  const megas = mbps / 8;
+  document.getElementById("windSpeed").textContent = `Velocidad: ${megas.toFixed(2)} MB/s`;
+}
+updateConnectionSpeed();
+
+
 // 🌡️ Clima actual
 fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&units=metric&lang=es&appid=${API_KEY}`)
   .then(res => res.json())
@@ -27,11 +35,10 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&uni
     const min = Math.round(data.main.temp_min);
     const max = Math.round(data.main.temp_max);
     const icon = data.weather[0].icon;
-    const wind = Math.round(data.wind.speed * 3.6);
 
     document.getElementById("tempToday").textContent = `${temp}°C`;
     document.getElementById("minToday").textContent = `Mín: ${min}°C`;
     document.getElementById("maxToday").textContent = `Máx: ${max}°C`;
     document.getElementById("iconToday").src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-    document.getElementById("windSpeed").textContent = `Viento: ${wind} km/h`;
+
   });
