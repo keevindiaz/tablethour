@@ -3,50 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Panel Kiosko</title>
+  <title>Tablet Hour</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="panel">
-    <div class="left-column">
-      <div class="days">
-        <div class="day" id="Lunes">LUN</div>
-        <div class="day" id="Martes">MAR</div>
-        <div class="day" id="Miércoles">MIE</div>
-        <div class="day" id="Jueves">JUE</div>
-        <div class="day" id="Viernes">VIE</div>
-        <div class="day" id="Sábado">SAB</div>
-        <div class="day" id="Domingo">DOM</div>
+  <div class="layout">
+    <!-- Columna izquierda: días -->
+    <div class="days">
+      <span>LUN</span>
+      <span>MAR</span>
+      <span>MIÉ</span>
+      <span>JUE</span>
+      <span>VIE</span>
+      <span>SÁB</span>
+      <span>DOM</span>
+    </div>
+
+    <!-- Centro: hora y clima -->
+    <div class="center-block">
+      <div id="clock" class="clock">--:--</div>
+
+      <div class="weather-block">
+        <img id="iconToday" class="weather-icon" src="" alt="icono hoy" />
+        <div class="weather-temp">
+          <span id="tempToday">--°C</span>
+          <span id="minToday">Mín: --°C</span>
+          <span id="maxToday">Máx: --°C</span>
+        </div>
       </div>
     </div>
 
-<div class="weather-block">
-  <img id="iconToday" class="weather-icon" src="" alt="icono hoy" />
-  <div class="weather-temp">
-    <span id="tempToday">Actual: --°C</span>
-    <span id="minToday">Mín: --°C</span>
-    <span id="maxToday">Máx: --°C</span>
-  </div>
-</div>
-
-<!-- Clima mañana -->
-<div class="weather-block">
-  <img id="iconTomorrow" class="weather-icon" src="" alt="icono mañana" />
-  <div class="weather-temp">
-    <span id="tempTomorrow">Prom: --°C</span>
-    <span id="minTomorrow">Mín: --°C</span>
-    <span id="maxTomorrow">Máx: --°C</span>
-  </div>
-</div>
-
-
-    <div class="network-monitor" id="network">
-      Velocidad: <span id="speed">-- Mbps</span>
+    <!-- Derecha: viento -->
+    <div class="wind-block">
+      <span id="windSpeed">Viento: -- km/h</span>
     </div>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
-
-
