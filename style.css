@@ -1,62 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 body {
   margin: 0;
-  font-family: sans-serif;
   background-color: black;
+  font-family: 'Share Tech Mono', monospace;
   color: white;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
-.container {
+.panel {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+}
+
+.left-column {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 600px;
-}
-
-.clock {
-  font-size: 4em;
-  color: red;
-  margin-bottom: 20px;
+  justify-content: center;
+  margin-right: 30px;
 }
 
 .days {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 15px;
 }
 
 .day {
-  font-size: 1.5em;
+  font-size: 2em;
   color: white;
 }
 
 .day.active {
   color: red;
-  font-weight: bold;
+  border: 2px solid red;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.main-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.clock {
+  font-size: 6em;
+  color: red;
 }
 
 .weather {
-  font-size: 1.2em;
-  margin-bottom: 30px;
+  font-size: 1.5em;
+  color: red;
   text-align: center;
 }
 
 .buttons {
   display: flex;
+  gap: 15px;
   flex-wrap: wrap;
-  gap: 10px;
   justify-content: center;
 }
 
 .btn {
   background-color: red;
   color: white;
-  padding: 15px 20px;
+  padding: 15px 25px;
   text-decoration: none;
   font-size: 1.2em;
   border-radius: 8px;
