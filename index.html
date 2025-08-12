@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Tablet Hour</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="layout">
@@ -17,21 +17,25 @@
       <span>Sáb</span>
       <span>Dom</span>
     </div>
+
     <div class="center-block">
       <div class="clock" id="clock">--:--</div>
+
       <div class="weather-block">
-        <img src="weather-icon.png" alt="Icono clima" class="weather-icon" id="weather-icon">
+        <img id="weather-icon" class="weather-icon" src="" alt="icono clima" />
         <div class="weather-temp" id="weather-temp">
-          <span>--°C</span>
-          <span>--</span>
-          <span>Min: --° / Max: --°</span>
+          <span id="temp">--°C</span>
+          <span id="condition">--</span>
+          <span id="minmax">Min: --° / Max: --°</span>
         </div>
       </div>
     </div>
-    <div class="wind-block" id="wind-block">
-      Velocidad: -- Mbps ↓ / -- Mbps ↑
-    </div>
   </div>
+
+  <div class="speed-inline" id="wind-block">
+    Velocidad: -- Mbps ↓ / -- Mbps ↑
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
