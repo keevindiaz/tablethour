@@ -73,3 +73,4 @@ setInterval(updateWeather, 600000); // cada 10 minutos
 updateClock();
 updateNetworkSpeed();
 updateWeather();
+
