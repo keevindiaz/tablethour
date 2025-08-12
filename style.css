@@ -60,7 +60,7 @@ body {
 
 .clock {
   font-family: 'Orbitron', sans-serif;
-  font-size: 400px;
+  font-size: 350px;
   color: #ff3c3c;
   margin-bottom: 30px;
   margin-left: auto;
@@ -100,4 +100,5 @@ html, body {
   touch-action: manipulation;
   user-select: none;
 }
+
 
