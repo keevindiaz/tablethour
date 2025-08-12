@@ -1,8 +1,25 @@
-const API_KEY = "96e7bbdaaa30477ffd7b3bd013c61d49"; // Reemplazá con tu clave real
-const LAT = -34.6; // Buenos Aires
+const API_KEY = "96e7bbdaaa30477ffd7b3bd013c61d49";
+const LAT = -34.6;
 const LON = -58.55;
 
-// 🔵 Clima actual
+// ⏰ Reloj en tiempo real
+function updateClock() {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, "0");
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  document.getElementById("clock").textContent = `${hours}:${minutes}`;
+
+  // 🔴 Día actual en rojo
+  const days = ["DOM", "LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB"];
+  const today = days[now.getDay()];
+  document.querySelectorAll(".days span").forEach(span => {
+    span.classList.toggle("active", span.textContent === today);
+  });
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// 🌡️ Clima actual
 fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&units=metric&lang=es&appid=${API_KEY}`)
   .then(res => res.json())
   .then(data => {
@@ -10,34 +27,11 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&uni
     const min = Math.round(data.main.temp_min);
     const max = Math.round(data.main.temp_max);
     const icon = data.weather[0].icon;
+    const wind = Math.round(data.wind.speed * 3.6);
 
-    document.getElementById("tempToday").textContent = `Actual: ${temp}°C`;
+    document.getElementById("tempToday").textContent = `${temp}°C`;
     document.getElementById("minToday").textContent = `Mín: ${min}°C`;
     document.getElementById("maxToday").textContent = `Máx: ${max}°C`;
     document.getElementById("iconToday").src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-  });
-
-// 🟠 Pronóstico de mañana
-fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${LAT}&lon=${LON}&units=metric&lang=es&appid=${API_KEY}`)
-  .then(res => res.json())
-  .then(data => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const dayStr = tomorrow.toISOString().split("T")[0];
-
-    const tomorrowData = data.list.filter(item => item.dt_txt.startsWith(dayStr));
-
-    const temps = tomorrowData.map(item => item.main.temp);
-    const minTemps = tomorrowData.map(item => item.main.temp_min);
-    const maxTemps = tomorrowData.map(item => item.main.temp_max);
-
-    const avg = Math.round(temps.reduce((a, b) => a + b, 0) / temps.length);
-    const min = Math.round(Math.min(...minTemps));
-    const max = Math.round(Math.max(...maxTemps));
-    const icon = tomorrowData[4]?.weather[0].icon || "01d"; // Icono del mediodía aprox
-
-    document.getElementById("tempTomorrow").textContent = `Prom: ${avg}°C`;
-    document.getElementById("minTomorrow").textContent = `Mín: ${min}°C`;
-    document.getElementById("maxTomorrow").textContent = `Máx: ${max}°C`;
-    document.getElementById("iconTomorrow").src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+    document.getElementById("windSpeed").textContent = `Viento: ${wind} km/h`;
   });
