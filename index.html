@@ -7,29 +7,31 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="clock" id="clock">--:--</div>
-
-    <div class="days">
-      <div class="day" id="Lunes">Lunes</div>
-      <div class="day" id="Martes">Martes</div>
-      <div class="day" id="Miércoles">Miércoles</div>
-      <div class="day" id="Jueves">Jueves</div>
-      <div class="day" id="Viernes">Viernes</div>
-      <div class="day" id="Sábado">Sábado</div>
-      <div class="day" id="Domingo">Domingo</div>
+  <div class="panel">
+    <div class="left-column">
+      <div class="days">
+        <div class="day" id="Lunes">LUN</div>
+        <div class="day" id="Martes">MAR</div>
+        <div class="day" id="Miércoles">MIE</div>
+        <div class="day" id="Jueves">JUE</div>
+        <div class="day" id="Viernes">VIE</div>
+        <div class="day" id="Sábado">SAB</div>
+        <div class="day" id="Domingo">DOM</div>
+      </div>
     </div>
 
-    <div class="weather">
-      <div>🌡️ 26°C</div>
-      <div>💧 60% Humedad</div>
-    </div>
-
-    <div class="buttons">
-      <a href="https://youtube.com" target="_blank" class="btn">🎬 YouTube</a>
-      <a href="https://fast.com" target="_blank" class="btn">🌐 Red</a>
-      <a href="https://copilot.microsoft.com" target="_blank" class="btn">🧠 Copilot</a>
-      <a href="#" class="btn">⚙️ Config</a>
+    <div class="main-column">
+      <div class="clock" id="clock">--:--</div>
+      <div class="weather">
+        <div>🌡️ <span id="temp">26°C</span></div>
+        <div>💧 <span id="humedad">60% Humedad</span></div>
+      </div>
+      <div class="buttons">
+        <a href="https://youtube.com" target="_blank" class="btn">🎬 YouTube</a>
+        <a href="https://fast.com" target="_blank" class="btn">🌐 Red</a>
+        <a href="https://copilot.microsoft.com" target="_blank" class="btn">🧠 Copilot</a>
+        <a href="#" class="btn">⚙️ Config</a>
+      </div>
     </div>
   </div>
 
