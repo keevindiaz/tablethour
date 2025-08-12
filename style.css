@@ -1,85 +1,98 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-body {
+* {
   margin: 0;
-  background-color: black;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Share Tech Mono', monospace;
+  background-color: black;
   color: white;
+  width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
 }
 
 .panel {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  max-width: 900px;
+  width: 100vw;
+  height: 100vh;
   padding: 20px;
+  position: relative;
 }
 
 .left-column {
+  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 30px;
+  align-items: flex-start;
+  padding-left: 20px;
 }
 
 .days {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 25px;
 }
 
 .day {
-  font-size: 2em;
+  font-size: 3em;
   color: white;
 }
 
 .day.active {
   color: red;
   border: 2px solid red;
-  padding: 5px 10px;
+  padding: 5px 15px;
   border-radius: 5px;
 }
 
 .main-column {
-  flex: 1;
+  width: 80%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 30px;
 }
 
 .clock {
-  font-size: 6em;
+  font-size: 10em;
+  color: red;
+  margin-bottom: 40px;
+}
+
+.weather-row {
+  display: flex;
+  gap: 60px;
+  font-size: 2.5em;
   color: red;
 }
 
-.weather {
-  font-size: 1.5em;
-  color: red;
+.weather-box {
   text-align: center;
 }
 
-.buttons {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.btn {
-  background-color: red;
+.label {
+  font-size: 0.6em;
   color: white;
-  padding: 15px 25px;
-  text-decoration: none;
-  font-size: 1.2em;
-  border-radius: 8px;
-  transition: background 0.3s;
+  margin-bottom: 10px;
 }
 
-.btn:hover {
-  background-color: darkred;
+.weather-icon {
+  width: 80px;
+  height: 80px;
+  filter: brightness(0) invert(1);
+  margin-bottom: 10px;
+}
+
+.network-monitor {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  font-size: 1.5em;
+  color: white;
 }
