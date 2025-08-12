@@ -7,7 +7,7 @@ function updateClock() {
 
 function highlightToday() {
   const today = new Date().getDay(); // 0 = Domingo
-  const jsToCustomIndex = [6, 0, 1, 2, 3, 4, 5]; // Ajuste para nuestro orden
+  const jsToCustomIndex = [6, 0, 1, 2, 3, 4, 5];
   const activeIndex = jsToCustomIndex[today];
 
   const daySpans = document.querySelectorAll('#days span');
@@ -21,20 +21,19 @@ function updateWeather() {
   const condition = 'Despejado';
   const min = 18;
   const max = 27;
-  const iconSrc = 'weather-icon.png';
+  const iconSrc = 'https://openweathermap.org/img/wn/01d@2x.png';
 
-  document.getElementById('weather-temp').innerHTML = `
-    <span>${temp}°C</span>
-    <span>${condition}</span>
-    <span>Min: ${min}° / Max: ${max}°</span>
-  `;
+  document.getElementById('temp').textContent = `${temp}°C`;
+  document.getElementById('condition').textContent = condition;
+  document.getElementById('minmax').textContent = `Min: ${min}° / Max: ${max}°`;
   document.getElementById('weather-icon').src = iconSrc;
 }
 
 function updateSpeed() {
-  const download = Math.floor(Math.random() * 100);
-  const upload = Math.floor(Math.random() * 50);
-  document.getElementById('wind-block').textContent = `Velocidad: ${download} Mbps ↓ / ${upload} Mbps ↑`;
+  const download = (Math.random() * 100).toFixed(1);
+  const upload = (Math.random() * 50).toFixed(1);
+  document.getElementById('wind-block').textContent =
+    `Velocidad: ${download} Mbps ↓ / ${upload} Mbps ↑`;
 }
 
 updateClock();
