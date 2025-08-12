@@ -60,7 +60,7 @@ body {
 
 .clock {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 300px;
+  font-size: 400px;
   color: #ff3c3c;
   margin-bottom: 30px;
 }
@@ -79,7 +79,7 @@ body {
 .weather-temp {
   display: flex;
   flex-direction: column;
-  font-size: 32px;
+  font-size: 42px;
   gap: 8px;
 }
 
@@ -97,3 +97,4 @@ html, body {
   touch-action: manipulation;
   user-select: none;
 }
+
