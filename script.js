@@ -1,44 +1,47 @@
-const API_KEY = "96e7bbdaaa30477ffd7b3bd013c61d49";
-const LAT = -34.6;
-const LON = -58.55;
-
-// ⏰ Reloj en tiempo real
 function updateClock() {
   const now = new Date();
-  const hours = now.getHours().toString().padStart(2, "0");
-  const minutes = now.getMinutes().toString().padStart(2, "0");
-  document.getElementById("clock").textContent = `${hours}:${minutes}`;
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  document.getElementById('clock').textContent = `${hours}:${minutes}`;
+}
 
-  // 🔴 Día actual en rojo
-  const days = ["DOM", "LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB"];
-  const today = days[now.getDay()];
-  document.querySelectorAll(".days span").forEach(span => {
-    span.classList.toggle("active", span.textContent === today);
+function highlightToday() {
+  const today = new Date().getDay(); // 0 = Domingo
+  const jsToCustomIndex = [6, 0, 1, 2, 3, 4, 5]; // Ajuste para nuestro orden
+  const activeIndex = jsToCustomIndex[today];
+
+  const daySpans = document.querySelectorAll('#days span');
+  daySpans.forEach((span, index) => {
+    span.classList.toggle('active', index === activeIndex);
   });
 }
-setInterval(updateClock, 1000);
+
+function updateWeather() {
+  const temp = 23;
+  const condition = 'Despejado';
+  const min = 18;
+  const max = 27;
+  const iconSrc = 'weather-icon.png';
+
+  document.getElementById('weather-temp').innerHTML = `
+    <span>${temp}°C</span>
+    <span>${condition}</span>
+    <span>Min: ${min}° / Max: ${max}°</span>
+  `;
+  document.getElementById('weather-icon').src = iconSrc;
+}
+
+function updateSpeed() {
+  const download = Math.floor(Math.random() * 100);
+  const upload = Math.floor(Math.random() * 50);
+  document.getElementById('wind-block').textContent = `Velocidad: ${download} Mbps ↓ / ${upload} Mbps ↑`;
+}
+
 updateClock();
+highlightToday();
+updateWeather();
+updateSpeed();
 
-function updateConnectionSpeed() {
-  const mbps = navigator.connection?.downlink || 0;
-  const megas = mbps / 8;
-  document.getElementById("windSpeed").textContent = `Velocidad: ${megas.toFixed(2)} MB/s`;
-}
-updateConnectionSpeed();
-
-
-// 🌡️ Clima actual
-fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&units=metric&lang=es&appid=${API_KEY}`)
-  .then(res => res.json())
-  .then(data => {
-    const temp = Math.round(data.main.temp);
-    const min = Math.round(data.main.temp_min);
-    const max = Math.round(data.main.temp_max);
-    const icon = data.weather[0].icon;
-
-    document.getElementById("tempToday").textContent = `${temp}°C`;
-    document.getElementById("minToday").textContent = `Mín: ${min}°C`;
-    document.getElementById("maxToday").textContent = `Máx: ${max}°C`;
-    document.getElementById("iconToday").src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-
-  });
+setInterval(updateClock, 10000);
+setInterval(updateSpeed, 30000);
+setInterval(highlightToday, 6 * 60 * 60 * 1000);
