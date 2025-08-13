@@ -16,17 +16,28 @@ function highlightToday() {
   });
 }
 
-function updateWeather() {
-  const temp = 23;
-  const condition = 'Despejado';
-  const min = 18;
-  const max = 27;
-  const iconSrc = 'https://openweathermap.org/img/wn/01d@2x.png';
+async function updateWeather() {
+  const API_KEY = '96e7bbdaaa30477ffd7b3bd013c61d49'; // Reemplazá con tu clave real
+  const city = 'Villa Ballester,AR';
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
 
-  document.getElementById('temp').textContent = `${temp}°C`;
-  document.getElementById('condition').textContent = condition;
-  document.getElementById('minmax').textContent = `Min: ${min}° / Max: ${max}°`;
-  document.getElementById('weather-icon').src = iconSrc;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const temp = Math.round(data.main.temp);
+    const condition = data.weather[0].description;
+    const min = Math.round(data.main.temp_min);
+    const max = Math.round(data.main.temp_max);
+    const iconSrc = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+
+    document.getElementById('temp').textContent = `${temp}°C`;
+    document.getElementById('condition').textContent = condition.charAt(0).toUpperCase() + condition.slice(1);
+    document.getElementById('minmax').textContent = `Min: ${min}° / Max: ${max}°`;
+    document.getElementById('weather-icon').src = iconSrc;
+  } catch (error) {
+    console.error('Error al obtener el clima:', error);
+  }
 }
 
 function updateSpeed() {
@@ -44,3 +55,4 @@ updateSpeed();
 setInterval(updateClock, 10000);
 setInterval(updateSpeed, 30000);
 setInterval(highlightToday, 6 * 60 * 60 * 1000);
+setInterval(updateWeather, 10 * 60 * 1000); // Actualiza clima cada 10 min
