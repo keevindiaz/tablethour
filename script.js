@@ -1,67 +1,120 @@
-function updateClock() {
-  const now = new Date();
-  const hours = now.getHours().toString().padStart(2, '0');
-  const minutes = now.getMinutes().toString().padStart(2, '0');
-  document.getElementById('clock').textContent = `${hours}:${minutes}`;
+/* 🌐 Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-function highlightToday() {
-  const today = new Date().getDay(); // 0 = Domingo
-  const jsToCustomIndex = [6, 0, 1, 2, 3, 4, 5];
-  const activeIndex = jsToCustomIndex[today];
-
-  const daySpans = document.querySelectorAll('#days span');
-  daySpans.forEach((span, index) => {
-    span.classList.toggle('active', index === activeIndex);
-  });
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
 }
 
-async function updateWeather() {
-  const API_KEY = '96e7bbdaaa30477ffd7b3bd013c61d49'; // Reemplazá con tu clave real
-  const city = 'Villa Ballester,AR';
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=es&appid=${API_KEY}`;
+/* 🧱 Layout principal */
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 1280px;
+  width: 100%;
+}
 
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
+/* 📅 Días */
+.days {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  font-size: 1.2rem;
+}
 
-    const temp = Math.round(data.main.temp);
-    const feelsLike = Math.round(data.main.feels_like);
-    const condition = data.weather[0].description;
-    const min = Math.round(data.main.temp_min);
-    const max = Math.round(data.main.temp_max);
-    const humidity = data.main.humidity;
-    const iconSrc = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+.days span {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
 
-    document.getElementById('temp').textContent = `${temp}°C`;
-    document.getElementById('condition').textContent = condition.charAt(0).toUpperCase() + condition.slice(1);
-    document.getElementById('minmax').textContent = `Min: ${min}° / Max: ${max}°`;
-    document.getElementById('weather-icon').src = iconSrc;
+.days span.active {
+  background-color: #0078d7;
+  color: white;
+  font-weight: bold;
+}
 
-    // Extra: sensación térmica y humedad (si tenés espacio en el HTML)
-    const extra = `Sensación: ${feelsLike}° / Humedad: ${humidity}%`;
-    const extraBlock = document.getElementById('weather-extra');
-    if (extraBlock) {
-      extraBlock.textContent = extra;
-    }
-  } catch (error) {
-    console.error('Error al obtener el clima:', error);
+/* 🕒 Centro */
+.center-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 🌤️ Clima */
+.weather-block {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.weather-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.weather-temp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* 💨 Velocidad */
+.speed-inline {
+  margin-top: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* 📱 Responsive: móviles */
+@media screen and (max-width: 600px) {
+  .days {
+    flex-wrap: wrap;
+    font-size: 1rem;
+  }
+
+  .weather-block {
+    flex-direction: column;
+  }
+
+  .weather-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .speed-inline {
+    font-size: 0.9rem;
   }
 }
 
-function updateSpeed() {
-  const download = (Math.random() * 100).toFixed(1);
-  const upload = (Math.random() * 50).toFixed(1);
-  document.getElementById('wind-block').textContent =
-    `Velocidad: ${download} Mbps ↓ / ${upload} Mbps ↑`;
+/* 🖥️ Responsive: escritorio grande */
+@media screen and (min-width: 1280px) {
+  .layout {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .center-block {
+    align-items: flex-start;
+  }
 }
-
-updateClock();
-highlightToday();
-updateWeather();
-updateSpeed();
-
-setInterval(updateClock, 10000);
-setInterval(updateSpeed, 30000);
-setInterval(highlightToday, 6 * 60 * 60 * 1000);
-setInterval(updateWeather, 10 * 60 * 1000); // Actualiza clima cada 10 min
