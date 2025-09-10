@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
 
 * {
   margin: 0;
@@ -11,14 +10,14 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  touch-action: manipulation;
-  user-select: none;
-  font-family: 'Orbitron', 'Share Tech Mono', monospace;
-  font-display: swap;
+  font-family: 'Rajdhani', sans-serif;
   background-color: #111;
   color: #fff;
+  touch-action: manipulation;
+  user-select: none;
 }
 
+/* 🧱 Layout principal */
 .layout {
   display: grid;
   grid-template-columns: 150px 1fr;
@@ -26,8 +25,10 @@ html, body {
   width: 100%;
   height: 100%;
   padding: 20px;
+  gap: 20px;
 }
 
+/* 📅 Días */
 .days {
   grid-column: 1;
   grid-row: 1 / span 2;
@@ -45,6 +46,7 @@ html, body {
   text-align: center;
   border-radius: 8px;
   color: #ccc;
+  transition: background-color 0.3s ease;
 }
 
 .days .active {
@@ -53,6 +55,7 @@ html, body {
   font-weight: bold;
 }
 
+/* ⏰ Hora + clima */
 .center-block {
   grid-column: 2;
   grid-row: 1 / span 2;
@@ -60,13 +63,13 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 30px;
 }
 
 .clock {
   font-size: 40vh;
   line-height: 1;
   color: #ff3c3c;
-  margin-bottom: 30px;
   text-shadow: 0 0 20px #ff3c3c;
 }
 
@@ -74,6 +77,8 @@ html, body {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .weather-icon {
@@ -86,48 +91,10 @@ html, body {
   flex-direction: column;
   font-size: 45px;
   gap: 8px;
+  text-align: center;
 }
 
-@media screen and (max-width: 1280px) {
-  .layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    gap: 20px;
-  }
-
-  .days {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-size: 24px;
-    gap: 12px;
-  }
-
-  .center-block {
-    width: 100%;
-    align-items: center;
-  }
-
-  .clock {
-    font-size: 20vh;
-    margin-bottom: 20px;
-  }
-
-  .weather-block {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .weather-icon {
-    width: 80px;
-    height: 80px;
-  }
-
-  .weather-temp {
-    font-size: 28px;
-    text-align: center;
-  }
+.weather-extra {
+  font-size: 0.9em;
+  color: #aaa;
 }
