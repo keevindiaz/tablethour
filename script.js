@@ -49,19 +49,11 @@ async function updateWeather() {
   }
 }
 
-function updateSpeed() {
-  const download = (Math.random() * 100).toFixed(1);
-  const upload = (Math.random() * 50).toFixed(1);
-  document.getElementById('wind-block').textContent =
-    `Velocidad: ${download} Mbps ↓ / ${upload} Mbps ↑`;
-}
-
 updateClock();
 highlightToday();
 updateWeather();
-updateSpeed();
 
 setInterval(updateClock, 10000);
-setInterval(updateSpeed, 30000);
 setInterval(highlightToday, 6 * 60 * 60 * 1000);
 setInterval(updateWeather, 10 * 60 * 1000); // Actualiza clima cada 10 min
+
