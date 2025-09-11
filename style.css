@@ -67,7 +67,7 @@ html, body {
 }
 
 .clock {
-  font-size: 40vh;
+  font-size: 50vh;
   line-height: 1;
   color: #ff3c3c;
   text-shadow: 0 0 20px #ff3c3c;
@@ -98,3 +98,4 @@ html, body {
   font-size: 0.9em;
   color: #aaa;
 }
+
