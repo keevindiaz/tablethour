@@ -6,8 +6,10 @@
   box-sizing: border-box;
 }
 
-body {
-  padding-bottom: env(safe-area-inset-bottom);
+.layout::after {
+  content: '';
+  display: block;
+  height: 1px;
 }
 
 html, body {
@@ -109,5 +111,6 @@ html, body {
   width: 100%;
   pointer-events: none;
 }
+
 
 
