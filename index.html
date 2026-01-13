@@ -9,6 +9,8 @@
 </head>
 <body>
   <div class="layout">
+
+    <!-- 📅 Días -->
     <div class="days" id="days">
       <span>Lun</span>
       <span>Mar</span>
@@ -20,25 +22,64 @@
     </div>
 
     <div class="center-block">
+
+      <!-- 🕒 Reloj -->
       <div class="clock" id="clock">--:--</div>
 
-      <div class="weather-block">
-        <img id="weather-icon" class="weather-icon" src="" alt="icono clima" />
-        <div class="weather-temp" id="weather-temp">
-          <span id="temp">--°C</span>
-          <span id="condition">--</span>
-          <span id="minmax">Min: --° / Max: --°</span>
+      <!-- ⭐ ICONOS + CLIMA EN LA MISMA FILA -->
+      <div class="icons-weather-row">
+
+        <div class="top-icons">
+          <span id="open-timer">⏱️</span>
+          <span id="open-calendar">📅</span>
         </div>
+
+        <div class="weather-block">
+          <img id="weather-icon" class="weather-icon" src="" alt="icono clima" />
+          <div class="weather-temp" id="weather-temp">
+            <span id="temp">--°C</span>
+            <span id="condition">--</span>
+            <span id="minmax">Min: --° / Max: --°</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ⏱️ MODAL TEMPORIZADOR -->
+  <div id="timer-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">✖</span>
+      <h2>Temporizador</h2>
+
+      <div id="timer-display">40:00</div>
+
+      <div class="timer-buttons">
+        <button id="add5">+5 min</button>
+        <button id="sub5">-5 min</button>
+        <button id="reset">Restablecer</button>
+        <button id="start-stop">Iniciar</button>
       </div>
     </div>
   </div>
+
+  <!-- 📅 MODAL CALENDARIO -->
+  <div id="calendar-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">✖</span>
+      <h2 id="calendar-title"></h2>
+      <div id="calendar-grid"></div>
+    </div>
+  </div>
+
+  <!-- 📜 Scripts -->
   <script src="script.js"></script>
+  <script src="modals.js"></script>
+  <script src="timer.js"></script>
+  <script src="calendar.js"></script>
+
   <div style="height: 1px;"></div>
 </body>
 </html>
-
-
-
-
-
-
