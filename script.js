@@ -29,41 +29,25 @@ async function updateWeather() {
     const data = await response.json();
 
     const temp = Math.round(data.main.temp);
-    let condition = data.weather[0].description.toLowerCase();
+    const condition = data.weather[0].description;
     const min = Math.round(data.main.temp_min);
     const max = Math.round(data.main.temp_max);
 
-    /* 🔄 Traducciones manuales por si OpenWeather falla */
-    const traducciones = {
-      "overcast clouds": "Nublado total",
-      "broken clouds": "Nubes dispersas",
-      "few clouds": "Pocas nubes",
-      "scattered clouds": "Nubes dispersas",
-      "clear sky": "Cielo despejado",
-      "light rain": "Lluvia ligera",
-      "moderate rain": "Lluvia moderada"
-    };
-
-    if (traducciones[condition]) {
-      condition = traducciones[condition];
-    }
-
-    /* 📝 Formato final */
-    const formattedCondition =
-      condition.charAt(0).toUpperCase() + condition.slice(1);
-
-    /* 🌤️ Ícono con fallback seguro */
     const iconCode = data.weather[0].icon;
     const icon = document.getElementById('weather-icon');
 
+    /* Ícono con fallback seguro */
     icon.onerror = () => {
-      icon.onerror = null;
+      icon.onerror = null; // evita loop infinito
       icon.src = `https://openweathermap.org/img/wn/${iconCode}.png`;
     };
 
     icon.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
-    /* 📌 Actualiza DOM */
+    /* Texto del clima */
+    const formattedCondition =
+      condition.charAt(0).toUpperCase() + condition.slice(1).toLowerCase();
+
     document.getElementById('temp').textContent = `${temp}°C`;
     document.getElementById('condition').textContent = formattedCondition;
     document.getElementById('minmax').textContent = `Min: ${min}° / Max: ${max}°`;

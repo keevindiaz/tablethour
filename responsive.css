@@ -1,83 +1,50 @@
 @media screen and (max-width: 900px) {
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  gap: 20px;
+}
 
-  /* Layout general */
-  .layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    gap: 20px;
-  }
-
-  /* Días */
   .days {
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 22px;
+    font-size: 20px;
     gap: 10px;
     flex: 1;
   }
 
-  /* Contenedor central */
   .center-block {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
     flex: 2;
   }
 
-  /* Reloj */
   .clock {
-    font-size: 18vh;
-    margin-bottom: 5px;
+    font-size: 15vh;
+    margin-bottom: 10px;
   }
 
-  /* Fila iconos + clima */
-  .icons-weather-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 35px;
-    width: 100%;
-    margin-top: -10px;
-  }
-
-  /* Iconos */
-  .top-icons {
-    display: flex;
-    flex-direction: row;
-    gap: 25px;
-  }
-
-  .top-icons button,
-  .top-icons span {
-    font-size: 48px;   /* tamaño ideal para tablet */
-    padding: 0;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-  }
-
-  /* Clima */
   .weather-block {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
   .weather-icon {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
 
   .weather-temp {
-    font-size: 22px;
+    font-size: 24px;
     text-align: center;
   }
 }

@@ -209,3 +209,12 @@ html, body {
   width: 100%;
   margin-top: -20px;
 }
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 60px;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+}
