@@ -18,28 +18,40 @@ function highlightToday() {
   }
 }
 
-/* 🌤️ Clima compatible con Android 4.4.4 */
+/* 🌤️ Clima compatible con Android 4.4.4 (HTTP + XHR) */
 function updateWeather() {
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://wttr.in/Villa+Ballester?format=j1", true);
+
+  // IMPORTANTE: HTTP, NO HTTPS
+  xhr.open("GET", "http://wttr.in/Villa+Ballester?format=j1", true);
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      var data = JSON.parse(xhr.responseText);
+      try {
+        var data = JSON.parse(xhr.responseText);
 
-      var temp = data.current_condition[0].temp_C;
-      var condition = data.current_condition[0].weatherDesc[0].value;
-      var min = data.weather[0].mintempC;
-      var max = data.weather[0].maxtempC;
+        var temp = data.current_condition[0].temp_C;
+        var condition = data.current_condition[0].weatherDesc[0].value;
+        var min = data.weather[0].mintempC;
+        var max = data.weather[0].maxtempC;
 
-      document.getElementById("temp").textContent = temp + "°C";
-      document.getElementById("condition").textContent = condition;
-      document.getElementById("minmax").textContent =
-        "Min: " + min + "° / Max: " + max + "°";
+        document.getElementById("temp").textContent = temp + "°C";
+        document.getElementById("condition").textContent = condition;
+        document.getElementById("minmax").textContent =
+          "Min: " + min + "° / Max: " + max + "°";
 
-      // Ícono simple (wttr no da íconos)
-      document.getElementById("weather-icon").src = "https://via.placeholder.com/120?text=☁️";
+        // Ícono simple (wttr no provee íconos)
+        document.getElementById("weather-icon").src =
+          "https://via.placeholder.com/120?text=☁️";
+
+      } catch (e) {
+        console.log("Error procesando clima:", e);
+      }
     }
+  };
+
+  xhr.onerror = function () {
+    console.log("Error de red al obtener clima");
   };
 
   xhr.send();
@@ -51,6 +63,6 @@ highlightToday();
 updateWeather();
 
 /* 🔁 Intervalos */
-setInterval(updateClock, 1000);
-setInterval(highlightToday, 6 * 60 * 60 * 1000);
-setInterval(updateWeather, 10 * 60 * 1000);
+setInterval(updateClock, 1000);                 // Reloj perfecto
+setInterval(highlightToday, 6 * 60 * 60 * 1000); // Cada 6 horas
+setInterval(updateWeather, 10 * 60 * 1000);      // Clima cada 10 min
