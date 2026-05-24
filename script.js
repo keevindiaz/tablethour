@@ -1,5 +1,5 @@
 function updateWeather() {
-  var url = "https://corsproxy.io/?http://wttr.in/Villa+Ballester?format=j1";
+  var url = "https://clima.kevin-diaz98.workers.dev/";
 
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url, true);
