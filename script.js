@@ -18,12 +18,12 @@ function highlightToday() {
   }
 }
 
-/* 🌤️ Clima compatible con Android 4.4.4 (HTTP + XHR) */
+/* 🌤️ Clima usando corsproxy.io (HTTPS compatible con GitHub Pages) */
 function updateWeather() {
-  var xhr = new XMLHttpRequest();
+  var url = "https://corsproxy.io/?http://wttr.in/Villa+Ballester?format=j1";
 
-  // IMPORTANTE: HTTP, NO HTTPS
-  xhr.open("GET", "http://wttr.in/Villa+Ballester?format=j1", true);
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url, true);
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
@@ -40,7 +40,7 @@ function updateWeather() {
         document.getElementById("minmax").textContent =
           "Min: " + min + "° / Max: " + max + "°";
 
-        // Ícono simple (wttr no provee íconos)
+        // Ícono simple
         document.getElementById("weather-icon").src =
           "https://via.placeholder.com/120?text=☁️";
 
@@ -63,6 +63,6 @@ highlightToday();
 updateWeather();
 
 /* 🔁 Intervalos */
-setInterval(updateClock, 1000);                 // Reloj perfecto
-setInterval(highlightToday, 6 * 60 * 60 * 1000); // Cada 6 horas
-setInterval(updateWeather, 10 * 60 * 1000);      // Clima cada 10 min
+setInterval(updateClock, 1000);
+setInterval(highlightToday, 6 * 60 * 60 * 1000);
+setInterval(updateWeather, 10 * 60 * 1000);
