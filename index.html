@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- Permite ocultar barra superior en Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
   <title>Tablet Hour</title>
+
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="responsive.css" />
 </head>
+
 <body>
+
   <div class="layout">
 
     <!-- 📅 Días -->
@@ -25,26 +32,35 @@
 
       <!-- 🕒 Reloj -->
       <div class="clock" id="clock">--:--</div>
- <div class="weather-block">
-          <img id="weather-icon" class="weather-icon" src="" alt="icono clima" />
-          <div class="weather-temp" id="weather-temp">
-            <span id="temp">--°C</span>
-            <span id="condition">--</span>
-            <span id="minmax">Min: --° / Max: --°</span>
-          </div>
-        </div>
 
+      <!-- ☁️ Clima -->
+      <div class="weather-block">
+        <img id="weather-icon" class="weather-icon" src="" alt="icono clima" />
+        <div class="weather-temp" id="weather-temp">
+          <span id="temp">--°C</span>
+          <span id="condition">--</span>
+          <span id="minmax">Min: --° / Max: --°</span>
+        </div>
       </div>
 
+      <!-- 🔜 Mini resumen deportivo (lo agregamos después) -->
+      <div id="evento-resumen"></div>
+
     </div>
+
   </div>
 
-
   <!-- 📜 Scripts -->
-<script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 
+  <!-- Ocultar barra superior de Chrome -->
+  <script>
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        window.scrollTo(0, 1);
+      }, 100);
+    });
+  </script>
 
-  <div style="height: 1px;"></div>
 </body>
-
 </html>
