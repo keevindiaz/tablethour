@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <!-- Permite ocultar barra superior en Android -->
+  <!-- Permite fullscreen al agregar a pantalla de inicio -->
   <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#111">
 
   <title>Tablet Hour</title>
 
@@ -33,7 +34,7 @@
       <!-- 🕒 Reloj -->
       <div class="clock" id="clock">--:--</div>
 
-      <!-- ☁️ Clima -->
+      <!-- 🌤️ Clima -->
       <div class="weather-block">
         <img id="weather-icon" class="weather-icon" src="" alt="icono clima" />
         <div class="weather-temp" id="weather-temp">
@@ -53,14 +54,17 @@
   <!-- 📜 Scripts -->
   <script src="script.js" defer></script>
 
-  <!-- Ocultar barra superior de Chrome -->
+  <!-- Ocultar barra superior de Chrome en Android 4.4.4 -->
   <script>
     window.addEventListener("load", function () {
       setTimeout(function () {
         window.scrollTo(0, 1);
-      }, 100);
+      }, 300); // Chrome viejo necesita más delay
     });
   </script>
+
+  <!-- Altura extra para forzar fullscreen -->
+  <div style="height: 200px;"></div>
 
 </body>
 </html>
